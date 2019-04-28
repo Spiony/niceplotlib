@@ -1,0 +1,21 @@
+{
+	"mplRC": "nice.mplrc",
+
+	"maxTextwidth": 5.188976377952755905511811023622,
+	"maxTextwidthUnit": "inch",
+
+	"scaleId": 3,
+	"ratioId": 2,
+
+	"figBorder": [0.15, 0.15, 0.90, 0.90],
+
+	"lineStyles": ["-", "-.", "--", ":"],
+
+	"barWidth": 0.075,
+	"barMargin": 0.02,
+
+	"legVisible": 1,
+	"legExport": 0,
+	"legNcol": 1,
+	"legLinewidth": 0.5
+}
