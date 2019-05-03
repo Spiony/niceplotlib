@@ -82,6 +82,7 @@ print('# ---------------------------- TEST Plot Functions ----------------------
 plotDATA = nipl.readSingleCSV('simpleDataSet.csv', headerLength = 1)
 outputName = 'single2single'
 fig = nipl.createMultiLinesPlot(outputName, plotDATA[0], plotDATA[1], xlab = 'time / s', ylab = 'distance / m', title = 'niceplotlib', labels = [plotDATA[3]], axisFlag = [plotDATA[-1]])
+fig = nipl.stylizePlot(fig)
 nipl.savePlot(fig, outputName, outputDatatypes = ['pdf', 'png'])
 
 # Single to Multiple
@@ -91,6 +92,7 @@ nipl.savePlot(fig, outputName, outputDatatypes = ['pdf', 'png'])
 plotDATA = nipl.readAllCSV(dir = 'stack\\', headerLength = 1, csvDelimiter = '\t', legendRegex = r'sim_c([0-9]*)')
 outputName = 'multiple2single'
 fig1 = nipl.createMultiLinesPlot(outputName, plotDATA[0], plotDATA[1], xlab = '', ylab = '', title = '', labels = plotDATA[3], axisFlag = plotDATA[-1])
+fig1 = nipl.stylizePlot(fig1)
 nipl.savePlot(fig1, outputName, outputDatatypes = ['pdf', 'png'])
 
 
@@ -103,6 +105,7 @@ outputNamePre = 'multiple2multiple'
 for i in range(len(plotDATA[0])):	
 	outputName = outputNamePre + str(i)
 	fig1 = nipl.createMultiLinesPlot(outputName, [plotDATA[0][i]], [plotDATA[1][i]], xlab = '', ylab = '', title = '', labels = [plotDATA[3][i]], axisFlag = plotDATA[-1])
+	fig1 = nipl.stylizePlot(fig1)
 	nipl.savePlot(fig1, outputName, outputDatatypes = ['png'])
 
 
