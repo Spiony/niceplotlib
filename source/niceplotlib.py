@@ -27,9 +27,22 @@ import json
 # Add path
 import sys
 
+
+###############################################################################
+# Input Functions
+###############################################################################
+
 # Set default data format and use LaTeX
-mpl.use('pdf')
-mpl.rcParams["text.latex.preamble"].append(r'\usepackage{nicefrac}')
+
+def init():
+	mpl.use('pdf')
+	mpl.rcParams["text.latex.preamble"].append(r'\usepackage{nicefrac}')
+
+	# Preload default style dict (intended for usage in already finished plot
+	# scripts)
+	loadStyleDict()
+
+	return 0
 
 
 ###############################################################################
@@ -162,7 +175,7 @@ def reportStyle(styleDict):
 	return 0
 
 
-def stylizePlot(fig, styleDict = loadStyleDict())
+def stylizePlot(fig, styleDict = loadStyleDict()):
 	fig.set_size_inches(styleDict['width'], styleDict['height'])	
 	fig.subplots_adjust(left= styleDict['figBorder'][0], bottom = styleDict['figBorder'][1], right = styleDict['figBorder'][2], top = styleDict['figBorder'][3])
 	return fig
@@ -249,8 +262,8 @@ def savePlot(fig, outputFilename, outputDatatypes = ['pdf']):
 	print('Done!')
 	
 	return 0
-	
-	
+
+
 def exportLegend(legend, outputFilename, outputDatatypes, noEntries, ncols):
 	print('Export legend... ', end='')
 	nrows = int(noEntries/ncols) + noEntries % ncols
@@ -268,10 +281,11 @@ def exportLegend(legend, outputFilename, outputDatatypes, noEntries, ncols):
     
 	return 0
 
-	
+
 # stuff to run always here such as class/def
 def main():
     pass
+
 
 if __name__ == "__main__":
    # stuff only to run when not called via 'import' here
