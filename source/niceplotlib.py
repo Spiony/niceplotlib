@@ -148,6 +148,8 @@ def loadStyleDict(filepath = os.path.dirname(__file__) + '\style.json'):
 	# Current State: always search in module folder
 	styleDict['mplRC'] = os.path.join(os.path.dirname(__file__), styleDict['mplRC']) 
 
+	plt.style.use(styleDict['mplRC'])
+
 	return styleDict
 
 
@@ -158,7 +160,13 @@ def reportStyle(styleDict):
 		print('  {}: {}'.format(key, styleDict[key]))
 	print('\n')
 	return 0
-	
+
+
+def stylizePlot(fig, styleDict = loadStyleDict())
+	fig.set_size_inches(styleDict['width'], styleDict['height'])	
+	fig.subplots_adjust(left= styleDict['figBorder'][0], bottom = styleDict['figBorder'][1], right = styleDict['figBorder'][2], top = styleDict['figBorder'][3])
+	return fig
+
 
 ###############################################################################
 # Plot Wrapper Functions
@@ -169,8 +177,6 @@ def reportStyle(styleDict):
 def createMultiLinesPlot(outputName, xStack, yStack, xlab = '', ylab = '', xlim = [], ylim = [], title = '', fileIds = [],varIdsIn = [], labels = [], fig = [], axisFlag = [0], styleDict = loadStyleDict()):
 	print('Create Plot {} ... '.format(outputName), end='')
 	
-	plt.style.use(styleDict['mplRC'])
-
 	if not fig:
 		fig = plt.figure()
 		ax = fig.add_subplot(111)
@@ -224,9 +230,6 @@ def createMultiLinesPlot(outputName, xStack, yStack, xlab = '', ylab = '', xlim 
 			legendName = outputName + '_legend.pdf'
 			exportLegend(legend, legendName)
 	
-	fig.set_size_inches(styleDict['width'], styleDict['height'])
-	
-	fig.subplots_adjust(left= styleDict['figBorder'][0], bottom = styleDict['figBorder'][1], right = styleDict['figBorder'][2], top = styleDict['figBorder'][3])
 	print('Done!\n')
 	return fig
 
